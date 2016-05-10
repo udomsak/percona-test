@@ -1,0 +1,19 @@
+version: '2'
+services:
+  phpmyadmin:
+     build: ./phpmyadmin
+     image: phpmyadmin
+     hostname: phpmyadmin
+     env_file: config.env
+     ports:
+       - "8080:80"
+     links:
+       - percona
+  percona:
+     build: ./percona
+     image: percona
+     env_file: config.env
+     hostname: percona
+     expose:
+       - "3306"
+ 
